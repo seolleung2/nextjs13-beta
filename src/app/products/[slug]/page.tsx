@@ -7,6 +7,13 @@ type Props = {
   };
 };
 
+// * 동적인 메타데이터 생성
+export const generateMetadata = ({ params }: Props) => {
+  return {
+    title: `제품의 이름: ${params.slug}`,
+  };
+};
+
 const PantsPage = ({ params }: Props) => {
   if (params.slug === "nothing") notFound();
 
