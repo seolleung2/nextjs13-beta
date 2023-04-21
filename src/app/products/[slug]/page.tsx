@@ -7,7 +7,6 @@ type Props = {
 };
 
 const PantsPage = ({ params }: Props) => {
-  console.log(params);
   return <h1>{params.slug} 설명 페이지</h1>;
 };
 
