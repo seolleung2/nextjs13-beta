@@ -4,9 +4,9 @@ import { getProducts } from "@/service/products";
 
 const PRODUCTS_URL = "/products";
 
-const ProductsPage = () => {
+const ProductsPage = async () => {
   // * 정적 변수를 사용하는 것 대신, 서버 파일(데이터베이스) 에 있는 제품의 리스트를 읽어와서 그걸 보여줌
-  const products = getProducts();
+  const products = await getProducts();
 
   return (
     <>
@@ -14,7 +14,7 @@ const ProductsPage = () => {
       <ul>
         {products.map((product, index) => (
           <li key={index}>
-            <Link href={`${PRODUCTS_URL}/${product}`}>{product}</Link>
+            <Link href={`${PRODUCTS_URL}/${product.id}`}>{product.name}</Link>
           </li>
         ))}
       </ul>
