@@ -19,6 +19,8 @@ export const generateMetadata = async ({ params: { slug } }: Props) => {
   };
 };
 
+export const revalidate = 3;
+
 const ProductPage = async ({ params: { slug } }: Props) => {
   // * 서버 파일에 있는 데이터 중 해당 제품의 정보를 찾아서 그걸 보여줌
   const product = await getProduct(slug);
