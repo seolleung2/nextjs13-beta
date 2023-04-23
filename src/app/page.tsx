@@ -2,7 +2,7 @@ import Counter from "@/components/Counter";
 import os from "os";
 
 export default function Home() {
-  console.log("Hello!");
+  console.log("Hello! - Server Component");
   console.log(os.hostname());
   return (
     <>

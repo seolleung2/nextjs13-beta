@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 export default function Counter() {
   const [counter, setCounter] = useState<number>(0);
+  console.log("Hello! - Client Component");
   return (
     <>
       <p>{counter}</p>
