@@ -1,14 +1,25 @@
 import Link from "next/link";
 import React from "react";
 import { getProducts } from "@/service/products";
+import styles from "./pages.module.css";
 
 const PRODUCTS_URL = "/products";
 
-export const revalidate = 3;
+// export const revalidate = 3;
 
 const ProductsPage = async () => {
-  // * 정적 변수를 사용하는 것 대신, 서버 파일(데이터베이스) 에 있는 제품의 리스트를 읽어와서 그걸 보여줌
   const products = await getProducts();
+
+  const res = await fetch("https://meowfacts.herokuapp.com/", {
+    next: {
+      revalidate: 3,
+    },
+    // cache: 'force-cache', // default cache, 지정해 주지 않으면 영원히 캐시가 되므로 SSG 처럼 동작
+    // cache: 'no-store', // SSR 처럼 동작
+  });
+  const { data } = await res.json();
+
+  const factText = data[0];
 
   return (
     <>
@@ -20,6 +31,7 @@ const ProductsPage = async () => {
           </li>
         ))}
       </ul>
+      <article className={styles.article}>{factText}</article>
     </>
   );
 };
