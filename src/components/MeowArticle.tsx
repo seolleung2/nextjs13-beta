@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./MeowArticle.module.css";
 
 export default function MeowArticle() {
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useState<string>("고양이 데이터 준비중...");
 
   useEffect(() => {
     fetch("https://meowfacts.herokuapp.com/")
