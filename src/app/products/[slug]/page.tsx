@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getProduct, getProducts } from "@/service/products";
+import GoProductsPageButton from "@/components/GoProductsPageButton";
 
 type Props = {
   params: {
@@ -26,7 +27,8 @@ const ProductPage = async ({ params: { slug } }: Props) => {
   // * 서버 파일에 있는 데이터 중 해당 제품의 정보를 찾아서 그걸 보여줌
   const product = await getProduct(slug);
 
-  if (!product) notFound();
+  // if (!product) notFound();
+  if (!product) redirect("/products");
 
   return (
     <>
@@ -38,6 +40,7 @@ const ProductPage = async ({ params: { slug } }: Props) => {
         height={400}
         priority
       />
+      <GoProductsPageButton />
     </>
   );
 };
