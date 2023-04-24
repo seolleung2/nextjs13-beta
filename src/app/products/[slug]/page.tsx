@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProduct, getProducts } from "@/service/products";
 
@@ -27,7 +28,18 @@ const ProductPage = async ({ params: { slug } }: Props) => {
 
   if (!product) notFound();
 
-  return <h1>{product.name} 설명 페이지</h1>;
+  return (
+    <>
+      <h1>{product.name} 설명 페이지</h1>
+      <Image
+        src={product.image}
+        alt="Product Image"
+        width={400}
+        height={400}
+        priority
+      />
+    </>
+  );
 };
 
 export default ProductPage;
