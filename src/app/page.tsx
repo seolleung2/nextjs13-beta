@@ -7,7 +7,7 @@ export default function Home() {
   console.log(os.hostname());
   return (
     <>
-      <h1>메인 페이지</h1>
+      <h1>메인 페이지 버전 2</h1>
       <Counter />
       <div>
         <Image
